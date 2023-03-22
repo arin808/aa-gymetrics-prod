@@ -4,7 +4,9 @@ const port = (process.env.PORT || 3000);
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const path = require("path");
 const cors = require("cors");
+app.use(cors());
 
 //Route requirements
 const StudentRoutes = require("./routes/api/StudentsRoutes");
@@ -22,7 +24,6 @@ async function startServer() {
   app.use(express.static(path.join(__dirname + "/dist")));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use(cors());
   
   //API route connections
   app.use("/students", StudentRoutes);
@@ -36,7 +37,7 @@ async function startServer() {
 
   //Listen for active app on Port 3000
   app.listen(port, () => {
-    console.log(`Server is listening on port ${PORT}`);
+    console.log(`Server is listening on port ${port}`);
   });
 }
 
