@@ -16,13 +16,13 @@ const ActiveRoutes = require("./routes/api/ActiveRoutes");
 async function startServer() {
   await mongoConnect();
 
-  app.use(express.static(path.join(__dirname + "/dist")));
-
+  
   //Utilize parser for requests
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(cors());
-
+  app.use(express.static(path.join(__dirname + "/dist")));
+  
   //API route connections
   app.use("/students", StudentRoutes);
   app.use("/employees", EmployeeRoutes);
