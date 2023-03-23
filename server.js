@@ -1,6 +1,6 @@
 //Dependencies and requirements to setup DB
 const { mongoConnect } = require("./config/dbconfig");
-const port = (process.env.PORT || 3000);
+const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -37,7 +37,7 @@ async function startServer() {
 
   //Listen for active app on Port 3000
   app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log("Server is listening on port " + port);
   });
 }
 
