@@ -9,7 +9,7 @@ logger.level = "info" || "error";
 //Get employee by ID for login
 router.get("/:empEmail", async (req, res) => {
   try {
-    logger.info("Entering route to get employee by email");
+    logger.info("========Entering route to get employee by email========");
     //Find employee using id from request param
     const employee = await Employees.findOne({
       empEmail: req.params.empEmail,
@@ -19,10 +19,10 @@ router.get("/:empEmail", async (req, res) => {
     res.status(200).json(employee);
   } catch (error) {
     //Show error message
-    logger.error("Error getting employee by email:" + error.message)
+    logger.error("========Error getting employee by email:" + error.message + "========");
     res.status(403).json({ message: error.message });
   }
-  logger.info("Exiting route to get employee by email");
+  logger.info("========Exiting route to get employee by email========");
 });
 
 

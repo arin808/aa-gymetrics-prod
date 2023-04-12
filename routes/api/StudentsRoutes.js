@@ -8,13 +8,13 @@ logger.level = "info" || "error";
 
 //Get student by ID
 router.get("/:studentID", async (req, res) => {
-  logger.info("Entering route to get student by ID");
+  logger.info("========Entering route to get student by ID========");
   //Use request param to find student by ID
   const student = await Students.findOne({
     studentID: Number(req.params.studentID),
   });
   res.json(student);
-  logger.info("Exiting route to get student by ID");
+  logger.info("========Exiting route to get student by ID========");
 });
 
 module.exports = router;
